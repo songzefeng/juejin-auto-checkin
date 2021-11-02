@@ -13,16 +13,18 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Check 分支
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
-      - name: Use Node.js 10
+      - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 12.x
 
       - name: Npm Install
         run: |
           npm install
+        env:
+          CI: true
 
       - name: Run
         env:
@@ -38,8 +40,7 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
-        run: |
-          node index.js
+        run: node index.js
 
       - name: Delete Workflow Runs
         uses: Mattraks/delete-workflow-runs@main
