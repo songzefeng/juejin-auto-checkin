@@ -1,0 +1,29 @@
+{
+  "name": "juejin-auto-checkin",
+  "version": "1.0.0",
+  "description": "掘金每日自动签到与抽奖",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudojia/juejin-auto-checkin.git"
+  },
+  "keywords": [
+    "掘金",
+    "签到",
+    "脚本"
+  ],
+  "author": "sudojia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudojia/juejin-auto-checkin/issues"
+  },
+  "homepage": "https://github.com/sudojia/juejin-auto-checkin#readme",
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "request": "^2.88.2",
+    "ws": "^7.4.3"
+  }
+}
