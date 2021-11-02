@@ -1,4 +1,4 @@
-name: checkin
+name: auto-checkin
 
 on:
   workflow_dispatch:
@@ -24,14 +24,13 @@ jobs:
 
       - name: 安装依赖包
         run: |
-          npm install --save
+          npm install
 
       - name: 运行脚本
         run: |
           node index.js
-
         env:
-          JUEJIN_COOKIE: ${{ secrets.JUEJIN_COOKIE }}
+          JUEJIN_COOKIE: ${{ github.event.JUEJIN_COOKIE || secrets.JUEJIN_COOKIE }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
@@ -43,9 +42,3 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
-
-      - name: Delete Workflow Runs
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          retain_days: 1
-          keep_minimum_runs: 1
