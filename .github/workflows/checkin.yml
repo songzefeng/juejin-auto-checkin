@@ -18,24 +18,11 @@ jobs:
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
-
-      - name: 缓存依赖包
-        uses: actions/cache@v2.1.1
-        id: cache-dependencies
-        with:
-          path: node_modules
-          key: ${{runner.OS}}-${{hashFiles('**/package-lock.json')}}  
-
-      - name: 安装依赖包
-        run: |
-          npm install
+          node-version: 12.x
 
       - name: 开始执行
-        run: |
-          node index.js
         env:
-          JUEJIN_COOKIE: ${{ github.event.JUEJIN_COOKIE || secrets.JUEJIN_COOKIE }}
+          JUEJIN_COOKIE: ${{ secrets.JUEJIN_COOKIE }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
@@ -47,6 +34,9 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+        run: |
+          npm install
+          node index.js
 
       - name: Delete Workflow Runs
         uses: Mattraks/delete-workflow-runs@main

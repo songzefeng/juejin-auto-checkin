@@ -10,8 +10,7 @@
  */
 const $ = new require('./env').Env('掘金自动签到&抽奖');
 const notify = $.isNode() ? require('./sendNotify') : '';
-let cookies = $.isNode() ? (process.env.JUEJIN_COOKIE ? process.env.JUEJIN_COOKIE : '') : ($.getdata('JUEJIN_COOKIE') ? $.getdata('JUEJIN_COOKIE') : ''),
-    cookieArr = [], message = '', JJ_API = 'https://api.juejin.cn';
+let cookies = process.env.JUEJIN_COOKIE, cookieArr = [], message = '', JJ_API = 'https://api.juejin.cn';
 
 if (cookies.indexOf('&') > -1) {
     cookieArr = cookies.split('&');
