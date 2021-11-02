@@ -20,7 +20,11 @@ jobs:
         with:
           node-version: 12.x
 
-      - name: 开始执行
+      - name: Npm Install
+        run: |
+          npm install
+
+      - name: Run
         env:
           JUEJIN_COOKIE: ${{ secrets.JUEJIN_COOKIE }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
@@ -35,7 +39,6 @@ jobs:
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
         run: |
-          npm install
           node index.js
 
       - name: Delete Workflow Runs
