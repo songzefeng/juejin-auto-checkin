@@ -1,4 +1,4 @@
-name: auto-checkin
+name: juejin
 
 on:
   workflow_dispatch:
