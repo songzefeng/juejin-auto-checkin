@@ -22,7 +22,7 @@
 
 很久没逛掘金了，昨晚逛的时候偶然发现了一个签到的功能，所以就学习了一下，就有了这个项目~😁
 
-**目前 GitHub Actions 代码还是有问题**，有时间我再研究一下，本地亲测可以直接 `node index.js` （需安装 nodejs）
+**目前 GitHub Actions 代码还是有问题**，有时间我再研究一下，本地亲测可以直接 `node main.js` （需安装 nodejs，然后 `npm install`）
 
 ## 💍介绍
 
