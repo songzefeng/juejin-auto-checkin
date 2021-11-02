@@ -15,12 +15,12 @@ jobs:
       - name: Check 分支
         uses: actions/checkout@v2
 
-      - name: Use Node.js 14
+      - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12.x
 
-      - name: Npm Install
+      - name: 安装依赖
         run: |
           npm install
 
