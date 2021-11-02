@@ -39,7 +39,7 @@ jobs:
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
         run: |
-          node index.js
+          node main.js
 
       - name: Delete Workflow Runs
         uses: Mattraks/delete-workflow-runs@main
