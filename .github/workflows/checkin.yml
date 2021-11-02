@@ -14,19 +14,24 @@ jobs:
     steps:
       - name: Check 分支
         uses: actions/checkout@v2
-        with:
-          ref: master
 
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"  
+          node-version: "12.x"
+
+      - name: 缓存依赖包
+        uses: actions/cache@v2.1.1
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/package-lock.json')}}  
 
       - name: 安装依赖包
         run: |
           npm install
 
-      - name: 运行脚本
+      - name: 开始执行
         run: |
           node index.js
         env:
@@ -42,3 +47,9 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+
+      - name: Delete Workflow Runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1
