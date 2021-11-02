@@ -10,22 +10,25 @@
  */
 const $ = new require('./env').Env('掘金自动签到&抽奖');
 const notify = $.isNode() ? require('./sendNotify') : '';
-let cookies = process.env.JUEJIN_COOKIE, cookieArr = [], message = '', JJ_API = 'https://api.juejin.cn';
+let jueJinCookie = $.isNode() ? (process.env.JUEJIN_COOKIE ? process.env.JUEJIN_COOKIE : '') : ($.getdata('JUEJIN_COOKIE') ? $.getdata('JUEJIN_COOKIE') : ''),
+    cookiesArr = [], message = '';
 
-if (cookies.indexOf('&') > -1) {
-    cookieArr = cookies.split('&');
+const JJ_API = 'https://api.juejin.cn';
+
+if (jueJinCookie.indexOf('&') > -1) {
+    cookiesArr = jueJinCookie.split('&');
 } else {
-    cookieArr = [cookies];
+    cookiesArr = [jueJinCookie];
 }
 
 !(async () => {
-    if (!cookies) {
+    if (!jueJinCookie) {
         console.log('请设置环境变量 JUEJIN_COOKIE')
         return;
     }
-    for (let i = 0; i < cookieArr.length; i++) {
-        if (cookieArr[i]) {
-            $.cookie = cookieArr[i];
+    for (let i = 0; i < cookiesArr.length; i++) {
+        if (cookiesArr[i]) {
+            $.cookie = cookiesArr[i];
             $.isLogin = true;
             $.index = i + 1;
             await checkSignIn();
