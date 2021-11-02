@@ -1,20 +1,24 @@
 {
   "name": "juejin-auto-checkin",
-  "version": "1.0.1",
-  "description": "{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r     <h1 align=\"center\">掘金每日自动签到与抽奖</h1>\r </p>",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sudojia/juejin-auto-checkin.git"
+    "url": "git+https://github.com/sudojia/juejin-auto-checkin.git"
   },
   "keywords": [
-    "掘金","签到","脚本"
+    "掘金自动签到"
   ],
   "author": "sudojia",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudojia/juejin-auto-checkin/issues"
+  },
+  "homepage": "https://github.com/sudojia/juejin-auto-checkin#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "crypto-js": "^4.0.0",
