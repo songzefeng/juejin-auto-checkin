@@ -23,11 +23,20 @@ jobs:
         with:
           node-version: "12.x"
 
+      - name: 缓存依赖包
+        uses: actions/cache@v2.1.1
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/package-lock.json')}}
+
       - name: 安装依赖
         run: |
           npm install
 
       - name: Run
+        run: |
+          node juejin_checkin.js
         env:
           JUEJIN_COOKIE: ${{ secrets.JUEJIN_COOKIE }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
@@ -41,8 +50,6 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
           PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
-        run: |
-          node main.js
 
       - name: Delete Workflow Runs
         uses: Mattraks/delete-workflow-runs@main

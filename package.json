@@ -2,32 +2,24 @@
   "name": "juejin-auto-checkin",
   "version": "1.0.0",
   "description": "<p align=\"center\">\r     <h1 align=\"center\">掘金每日自动签到与抽奖</h1>\r </p>",
-  "main": "main.js",
+  "main": "juejin_checkin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sudojia/juejin-auto-checkin.git"
+    "url": "https://github.com/sudojia/juejin-auto-checkin.git"
   },
   "keywords": [
     "掘金自动签到"
   ],
   "author": "sudojia",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sudojia/juejin-auto-checkin/issues"
-  },
-  "homepage": "https://github.com/sudojia/juejin-auto-checkin#readme",
   "dependencies": {
-    "axios": "^0.21.1",
     "crypto-js": "^4.0.0",
     "download": "^8.0.0",
     "got": "^11.5.1",
     "http-server": "^0.12.3",
-    "jsdom": "^17.0.0",
-    "png-js": "^1.0.0",
-    "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
     "tough-cookie": "^4.0.0",
     "tunnel": "0.0.6",
