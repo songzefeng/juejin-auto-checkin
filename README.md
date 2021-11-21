@@ -49,7 +49,7 @@
 
 例如：`410b2axxxxxxxxxxxx`
 
-![getCookie](https://cdn.jsdelivr.net/gh/sudojia/sspanel_checkin/img/cookie.jpg)
+![getCookie](https://cdn.jsdelivr.net/gh/sudojia/juejin-auto-checkin/img/cookie.jpg)
 
 ### 消息推送变量（可选）
 
