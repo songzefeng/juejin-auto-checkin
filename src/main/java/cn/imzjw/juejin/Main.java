@@ -28,7 +28,7 @@ public class Main {
     /**
      * 消息
      */
-    private String msg = "";
+    private static String msg = "";
 
     static {
         // 检测签到状态 \ Cookie 是否失效
@@ -233,7 +233,7 @@ public class Main {
         }
         cookie.setCookies(args[0]);
         main.checkSignIn();
-        if (args.length == 2) {
+        if (2 == args.length && !"".equals(msg)) {
             main.sendMsg(args[1]);
         }
     }
