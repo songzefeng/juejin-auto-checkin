@@ -233,7 +233,7 @@ public class Main {
         }
         cookie.setCookies(args[0]);
         main.checkSignIn();
-        if (2 == args.length && !"".equals(msg)) {
+        if (2 == args.length) {
             main.sendMsg(args[1]);
         }
     }
