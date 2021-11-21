@@ -1,0 +1,42 @@
+name: juejin
+
+on:
+  push:
+  gollum:
+  schedule:
+    - cron: '35 0 * * *'
+  watch:
+    types: [ started ]
+
+jobs:
+  Code:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - uses: actions/checkout@v2
+      - name: 安装 JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: 缓存 Maven 依赖
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run
+        env:
+          JUEJIN_COOKIE: ${{ secrets.JUEJIN_COOKIE }}
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        run: |
+          mvn clean
+          mvn compile exec:java -Dexec.mainClass="cn.imzjw.main.Run" -Dexec.args="${JUEJIN_COOKIE} ${PUSH_TOKEN}"
+
+      - name: Delete Workflow Runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1
