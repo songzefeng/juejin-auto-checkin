@@ -33,7 +33,7 @@ jobs:
           PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
         run: |
           mvn clean
-          mvn compile exec:java -Dexec.mainClass="cn.imzjw.main.Run" -Dexec.args="${JUEJIN_COOKIE} ${PUSH_TOKEN}"
+          mvn compile exec:java -Dexec.mainClass="cn.imzjw.juejin.Main" -Dexec.args="${JUEJIN_COOKIE} ${PUSH_TOKEN}"
 
       - name: Delete Workflow Runs
         uses: Mattraks/delete-workflow-runs@main
