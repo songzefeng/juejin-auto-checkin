@@ -7,8 +7,6 @@ import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,8 +77,6 @@ public class Main {
                 Integer incrPoint = jsonObject.getJSONObject(CommonConstants.DATA).getInteger(CommonConstants.INCR_POINT);
                 // 当前账号总矿石数
                 Integer sumPoint = jsonObject.getJSONObject(CommonConstants.DATA).getInteger(CommonConstants.SUM_POINT);
-                LOGGER.info("签到成功~");
-                LOGGER.info("【今日收入】" + incrPoint + "矿石数 【当前总矿石数】" + sumPoint + "矿石数");
                 msg += "「掘金签到报告」\n\n【账号信息】" + getUserName() + "\n【签到状态】签到成功~\n【今日收入】" + incrPoint + "矿石数\n【总矿石数】" + sumPoint + "矿石数\n";
                 getCounts();
                 Thread.sleep(1500);
@@ -119,7 +115,6 @@ public class Main {
         try {
             JSONObject jsonObject = request(CommonConstants.POST, 5);
             if (isNormalUsers(jsonObject)) {
-                LOGGER.info("抽中了【" + jsonObject.getJSONObject(CommonConstants.DATA).getString(CommonConstants.LOTTERY_NAME) + "】");
                 msg += "【抽奖信息】抽中了" + jsonObject.getJSONObject(CommonConstants.DATA).getString(CommonConstants.LOTTERY_NAME) + "\n";
             }
         } catch (Exception e) {
@@ -155,8 +150,6 @@ public class Main {
                 Integer contCount = jsonObject.getJSONObject(CommonConstants.DATA).getInteger(CommonConstants.CONT_COUNT);
                 // 累计签到天数
                 Integer sumCount = jsonObject.getJSONObject(CommonConstants.DATA).getInteger(CommonConstants.SUM_COUNT);
-                LOGGER.info("连续签到" + contCount + "天");
-                LOGGER.info("累计签到" + sumCount + "天");
                 msg += "【签到统计】连签" + contCount + "天、累签" + sumCount + "天\n";
             }
         } catch (Exception e) {
@@ -172,7 +165,6 @@ public class Main {
     private void sendMsg(String token) {
         HttpUtils.msgGet("http://pushplus.hxtrip.com/send?token="
                 + token + "&title=掘金签到报告 "
-                + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 + "&content=" + msg);
     }
 
