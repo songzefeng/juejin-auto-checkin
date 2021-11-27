@@ -1,6 +1,6 @@
 package cn.imzjw.juejin.utils;
 
-import cn.imzjw.juejin.constant.CommonConstants;
+import cn.imzjw.juejin.constant.CommonConst;
 import cn.imzjw.juejin.entity.Cookie;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.http.HttpHeaders;
@@ -37,7 +37,7 @@ public class HttpUtils {
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
             .defaultHeader(HttpHeaders.ACCEPT, MediaType.ALL_VALUE)
             .defaultHeader(HttpHeaders.USER_AGENT, USER_AGENT)
-            .defaultHeader(HttpHeaders.REFERER, CommonConstants.JUE_JIN_HOST)
+            .defaultHeader(HttpHeaders.REFERER, CommonConst.JUE_JIN_HOST)
             .defaultHeader(HttpHeaders.COOKIE, COOKIE.getCookies())
             .build();
 

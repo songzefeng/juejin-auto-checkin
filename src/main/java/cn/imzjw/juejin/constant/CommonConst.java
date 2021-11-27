@@ -6,7 +6,7 @@ package cn.imzjw.juejin.constant;
  * @author https://blog.imzjw.cn
  * @date 2021/11/5 19:37
  */
-public interface CommonConstants {
+public interface CommonConst {
     /**
      * 成功
      */
